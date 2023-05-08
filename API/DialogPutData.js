@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, FlatList,Modal, TextInput ,Alert } from 'react-
 import {React,useEffect, useState} from 'react';
 import { Button } from 'react-native';
 
- const App = ()=>{
+ const DialogPutData = ()=>{
   const [data,setData] = useState([]);
   const [showModal,setShowModal] = useState(false);
   const [selectedUser,setSelectedUser]= useState(undefined)
@@ -152,4 +152,4 @@ const styles = StyleSheet.create({
   }
   
 });
-export default App;
+export default DialogPutData;
