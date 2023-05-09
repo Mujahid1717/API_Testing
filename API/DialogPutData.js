@@ -35,7 +35,7 @@ const UpdateModal = (props)=>{
 
   // useEffect(()=>{
   //   if(props.selectedUser){
-  //     // setName(props.selectedUser.name);
+  //     setName(props.selectedUser.name);
   //     setAge(props.selectedUser.age.toString());
   //     setEmail(props.selectedUser.email);
   //   }
@@ -55,10 +55,10 @@ const UpdateModal = (props)=>{
   </View>)
 }
 const updateDataUser = async()=>{
-const url = 'http://10.0.2.2:3000/users';
-  const id = selectedUser.id;
+    const url = 'http://10.0.2.2:3000/users';
+    const id = selectedUser.id;
  
-  let result = await fetch(`${url}/${id}`,{
+    let result = await fetch(`${url}/${id}`,{
     method:'PUT',
     headers:{'content-type':'application/json'},
     body:JSON.stringify({"name":name,"age":age,"email":email})
@@ -81,7 +81,7 @@ const deleteUser = async (id) =>{
     })
     result = await result.json();
     if (result){
-      console.warn('user deleted')
+      Alert.alert('Error','Are You Sure to delete user')
       getAPIData();
     }
 }
@@ -97,7 +97,7 @@ useEffect (()=>{
         data.length ?<FlatList 
          data = {data}
          renderItem = {({item})=><View style={styles.dataWrapper}>
-          <View style={{flex:1}}><Text style={{fontSize:14}}> {item.name}</Text></View>
+          <View style={{flex:1}}><Text style={{fontSize:14}}> {item.name.toUpperCase()}</Text></View>
           <View style={{flex:1}}><Text style={{fontSize:14}}>{item.age}</Text></View>
           <View style={{flex:1}}><Text style={{fontSize:14}}>{item.email}</Text></View>
           <View style={{flex:1,marginTop:10}}><Button title='Delete' onPress={()=>deleteUser(item.id)}></Button></View>
